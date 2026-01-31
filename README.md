@@ -2,6 +2,22 @@
 
 A collection of skills for [Clawdbot](https://github.com/clawdbot/clawdbot) - the extensible AI assistant.
 
+## Table of Contents
+
+- [Skills](#skills)
+- [Installation](#installation)
+  - [Option 1: Install Single Skill](#option-1-install-single-skill)
+  - [Option 2: Install Multiple Skills](#option-2-install-multiple-skills)
+  - [Option 3: Sparse Checkout](#option-3-sparse-checkout-download-only-what-you-need)
+- [Using with Clawdbot](#using-with-clawdbot)
+  - [How It Works](#how-it-works)
+  - [Example Usage](#example-usage)
+  - [Telling Your Agent About New Skills](#telling-your-agent-about-new-skills)
+- [Development](#development)
+- [Contributing](#contributing)
+- [License](#license)
+- [Credits](#credits)
+
 ## Skills
 
 | Skill | Description | Status |

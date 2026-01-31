@@ -39,6 +39,34 @@ mv bahn ~/clawd/skills/
 cd .. && rm -rf openclaw-skills
 ```
 
+## Using with Clawdbot
+
+Once installed, your Clawdbot agent can use these skills immediately. The agent will automatically discover skills in its workspace and use them based on the skill descriptions in each `SKILL.md` file.
+
+### How It Works
+
+1. **Skill Discovery** - Clawdbot scans the `~/clawd/skills/` directory on startup
+2. **Automatic Loading** - Each `SKILL.md` file provides instructions for the agent
+3. **Context-Aware** - The agent uses skills when your requests match their descriptions
+
+### Example Usage
+
+After installing the `bahn` skill:
+
+**You:** "Is the ICE 801 from Berlin to Munich on time?"
+
+**Agent:** [Uses bahn skill to check real-time delays]
+
+### Telling Your Agent About New Skills
+
+If you've installed a new skill and your agent doesn't seem to be using it, you can explicitly tell your agent:
+
+```
+"I've installed the bahn skill in ~/clawd/skills/bahn/. You can now check Deutsche Bahn train delays and connections."
+```
+
+Your agent will read the skill's `SKILL.md` and know how to use it.
+
 ## Development
 
 Each skill is self-contained with its own:

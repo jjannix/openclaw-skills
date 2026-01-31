@@ -15,7 +15,7 @@ A collection of skills for [Clawdbot](https://github.com/clawdbot/clawdbot) - th
 ```bash
 git clone https://github.com/jjannix/openclaw-skills.git
 cd openclaw-skills
-cp -r bahn ~/.clawdbot/skills/
+cp -r bahn ~/clawd/skills/
 cd .. && rm -rf openclaw-skills
 ```
 
@@ -24,7 +24,7 @@ cd .. && rm -rf openclaw-skills
 ```bash
 git clone https://github.com/jjannix/openclaw-skills.git
 cd openclaw-skills
-cp -r bahn weather github ~/.clawdbot/skills/
+cp -r bahn weather github ~/clawd/skills/
 cd .. && rm -rf openclaw-skills
 ```
 
@@ -35,7 +35,7 @@ git clone --no-checkout https://github.com/jjannix/openclaw-skills.git
 cd openclaw-skills
 git sparse-checkout set bahn
 git checkout
-mv bahn ~/.clawdbot/skills/
+mv bahn ~/clawd/skills/
 cd .. && rm -rf openclaw-skills
 ```
 

@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Temp files
+*.log
+.DS_Store
+*.tmp
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build artifacts
+dist/
+build/

@@ -28,17 +28,7 @@ cp -r bahn weather github ~/.clawdbot/skills/
 cd .. && rm -rf openclaw-skills
 ```
 
-### Option 3: Using Installation Script (Recommended)
-
-```bash
-# Install specific skills
-curl -sSL https://raw.githubusercontent.com/jjannix/openclaw-skills/main/install.sh | bash -s -- bahn
-
-# Install multiple skills
-curl -sSL https://raw.githubusercontent.com/jjannix/openclaw-skills/main/install.sh | bash -s -- bahn weather github
-```
-
-### Option 4: Sparse Checkout (Download Only What You Need)
+### Option 3: Sparse Checkout (Download Only What You Need)
 
 ```bash
 git clone --no-checkout https://github.com/jjannix/openclaw-skills.git

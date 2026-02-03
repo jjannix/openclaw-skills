@@ -85,7 +85,25 @@ journeys.forEach(j => {
 });
 ```
 
-**Note:** Pricing is returned in EUR and may vary based on time, train type, and availability.
+**With Bahncard discounts:**
+
+The skill supports Bahncard pricing. Specify loyalty card for discounted prices:
+
+```javascript
+import { data as cards } from 'db-vendo-client/format/loyalty-cards.js';
+
+const { journeys } = await client.journeys(fromId, toId, {
+  departure: new Date(),
+  results: 3,
+  loyaltyCard: {
+    type: cards.BAHNCARD,
+    discount: 25,  // or 50
+    class: 2       // 1st or 2nd class
+  }
+});
+```
+
+**Note:** Pricing is returned in EUR and may vary based on time, train type, Bahncard status, and availability.
 
 ### 5. Get Departure Board with Real-Time Data
 

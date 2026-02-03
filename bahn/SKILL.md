@@ -1,6 +1,6 @@
 ---
 name: bahn
-description: Check Deutsche Bahn train connections, real-time delays, and ticket prices. Use when users need to check if their train or bus is on time, find connections between stations, get departure boards with delay information, look up station IDs, or check ticket prices. Supports db-vendo-client with real-time delay data and pricing from German public transport.
+description: Check Deutsche Bahn train connections, real-time delays, ticket prices, and Bahncard discounts. Use when users need to check if their train or bus is on time, find connections between stations, get departure boards with delay information, look up station IDs, check ticket prices, or compare Bahncard savings. Supports db-vendo-client with real-time delay data, pricing, and loyalty card integration from German public transport.
 ---
 
 # Bahn Delays

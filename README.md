@@ -22,7 +22,7 @@ A collection of skills for [Clawdbot](https://github.com/clawdbot/clawdbot) - th
 
 | Skill | Description | Status |
 |-------|-------------|--------|
-| [bahn](./bahn/) | Deutsche Bahn train delays and connections | ✅ Stable |
+| [bahn](./bahn/) | Deutsche Bahn delays, connections, and ticket prices | ✅ Stable |
 
 ## Installation
 
@@ -73,12 +73,16 @@ After installing the `bahn` skill:
 
 **Agent:** [Uses bahn skill to check real-time delays]
 
+**You:** "What's the ticket price from Berlin to Munich?"
+
+**Agent:** [Uses bahn skill to check pricing via journeys endpoint]
+
 ### Telling Your Agent About New Skills
 
 If you've installed a new skill and your agent doesn't seem to be using it, you can explicitly tell your agent:
 
 ```
-"I've installed the bahn skill in ~/clawd/skills/bahn/. You can now check Deutsche Bahn train delays and connections."
+"I've installed the bahn skill in ~/clawd/skills/bahn/. You can now check Deutsche Bahn train delays, connections, and ticket prices."
 ```
 
 Your agent will read the skill's `SKILL.md` and know how to use it.

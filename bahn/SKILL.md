@@ -1,6 +1,6 @@
 ---
 name: bahn
-description: Check Deutsche Bahn train connections and real-time delays. Use when users need to check if their train or bus is on time, find connections between stations, get departure boards with delay information, or look up station IDs. Supports db-vendo-client with real-time delay data from German public transport.
+description: Check Deutsche Bahn train connections, real-time delays, and ticket prices. Use when users need to check if their train or bus is on time, find connections between stations, get departure boards with delay information, look up station IDs, or check ticket prices. Supports db-vendo-client with real-time delay data and pricing from German public transport.
 ---
 
 # Bahn Delays
@@ -62,7 +62,32 @@ console.log(stations[0].id); // e.g., 8000261 for München Hbf
 
 See [Station IDs](references/station-ids.md) for common stations.
 
-### 4. Get Departure Board with Real-Time Data
+### 4. Check Ticket Prices
+
+Use `scripts/check-price.mjs` to check ticket prices for routes:
+
+```bash
+node scripts/check-price.mjs
+```
+
+Or use the `journeys()` endpoint:
+
+```javascript
+const { journeys } = await client.journeys(fromId, toId, {
+  departure: new Date(),
+  results: 3
+});
+
+journeys.forEach(j => {
+  if (j.price) {
+    console.log(`Price: ${j.price.amount} ${j.price.currency}`);
+  }
+});
+```
+
+**Note:** Pricing is returned in EUR and may vary based on time, train type, and availability.
+
+### 5. Get Departure Board with Real-Time Data
 
 ```javascript
 const { departures } = await client.departures(stationId, {

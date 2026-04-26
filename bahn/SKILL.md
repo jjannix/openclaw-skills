@@ -13,9 +13,9 @@ Check Deutsche Bahn train connections and real-time delay information using the 
 
 ```javascript
 import { createClient } from 'db-vendo-client';
-import { profile as dbnavProfile } from 'db-vendo-client/p/dbnav/index.js';
+import { profile as dbProfile } from 'db-vendo-client/p/db/index.js';
 
-const client = createClient(dbnavProfile, 'user-agent');
+const client = createClient(dbProfile, 'user-agent');
 const { departures } = await client.departures('8098160', { // Berlin Hbf
   when: new Date(),
   duration: 60
@@ -138,7 +138,7 @@ departures.forEach(dep => {
 
 3. **`null` delay means on time** - Not missing data
 
-4. **Choose the right profile** - See [API Reference](references/api-reference.md#api-profiles) for profile comparison (dbnav recommended for most use cases)
+4. **Choose the right profile** - Use the `db` profile. The `dbnav` profile is blocked from datacenter IPs. See [API Reference](references/api-reference.md#api-profiles) for details.
 
 5. **Respect rate limits** - Use caching to avoid blocking
 
@@ -176,7 +176,7 @@ Each departure object contains:
 **Rate limit errors?**
 - Add delays between requests
 - Use caching (consider `cached-hafas-client` wrapper)
-- Try a different profile (dbnav is more stable than db/dbweb)
+- The `db` profile works from servers. `dbnav` may be blocked from datacenter IPs.
 
 **Station not found?**
 - Use `locations()` to search for the station name and get the correct ID

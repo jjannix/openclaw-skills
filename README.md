@@ -1,111 +1,65 @@
-# openclaw-skills
+<div align="center">
 
-A collection of skills for [Clawdbot](https://github.com/clawdbot/clawdbot) - the extensible AI assistant.
+# OpenClaw Skills
 
-## Table of Contents
+*Community skills for [OpenClaw](https://github.com/openclaw/openclaw) — the extensible AI assistant.*
 
-- [Skills](#skills)
-- [Installation](#installation)
-  - [Option 1: Install Single Skill](#option-1-install-single-skill)
-  - [Option 2: Install Multiple Skills](#option-2-install-multiple-skills)
-  - [Option 3: Sparse Checkout](#option-3-sparse-checkout-download-only-what-you-need)
-- [Using with Clawdbot](#using-with-clawdbot)
-  - [How It Works](#how-it-works)
-  - [Example Usage](#example-usage)
-  - [Telling Your Agent About New Skills](#telling-your-agent-about-new-skills)
-- [Development](#development)
-- [Contributing](#contributing)
-- [License](#license)
-- [Credits](#credits)
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-379k%20⭐-purple?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB5PSIuOWVtIiBmb250LXNpemU9IjkwIj7wn6SnPC90ZXh0Pjwvc3ZnPg==)](https://github.com/openclaw/openclaw)
 
-## Skills
+</div>
 
-| Skill | Description | Status |
-|-------|-------------|--------|
-| [bahn](./bahn/) | Deutsche Bahn delays, connections, prices, and Bahncard discounts | ✅ Stable |
+Skills are instruction sets that teach OpenClaw agents how to handle specific tasks — from checking train delays to managing your Notion workspace. Each skill is self-contained and works out of the box.
 
-## Installation
+## What's inside
 
-### Option 1: Install Single Skill
+| Skill | What it does | Needs |
+|-------|-------------|-------|
+| [bahn](./bahn/) | Deutsche Bahn connections, real-time delays, prices, Bahncard discounts | Chromium browser |
+| [notion](./notion/) | Read, create, and manage Notion pages, databases, and blocks | Notion API key |
+| [video-download](./video-download/) | Download videos from YouTube, Twitter/X, TikTok, Instagram via yt-dlp | yt-dlp |
+
+More coming. Each skill is a folder with a `SKILL.md` (instructions the agent reads) and whatever scripts or references it needs.
+
+## Quick start
 
 ```bash
 git clone https://github.com/jjannix/openclaw-skills.git
 cd openclaw-skills
-cp -r bahn ~/clawd/skills/
-cd .. && rm -rf openclaw-skills
+cp -r <skill-name> ~/.openclaw/workspace/skills/
+rm -rf openclaw-skills
 ```
 
-### Option 2: Install Multiple Skills
+OpenClaw discovers skills in its workspace automatically. If your agent doesn't pick up a new skill right away, just tell it:
 
-```bash
-git clone https://github.com/jjannix/openclaw-skills.git
-cd openclaw-skills
-cp -r bahn weather github ~/clawd/skills/
-cd .. && rm -rf openclaw-skills
-```
+> "I installed the bahn skill. You can now check Deutsche Bahn connections and delays."
 
-### Option 3: Sparse Checkout (Download Only What You Need)
+It'll read the `SKILL.md` and know exactly what to do.
 
-```bash
-git clone --no-checkout https://github.com/jjannix/openclaw-skills.git
-cd openclaw-skills
-git sparse-checkout set bahn
-git checkout
-mv bahn ~/clawd/skills/
-cd .. && rm -rf openclaw-skills
-```
+## What's a skill, technically
 
-## Using with Clawdbot
-
-Once installed, your Clawdbot agent can use these skills immediately. The agent will automatically discover skills in its workspace and use them based on the skill descriptions in each `SKILL.md` file.
-
-### How It Works
-
-1. **Skill Discovery** - Clawdbot scans the `~/clawd/skills/` directory on startup
-2. **Automatic Loading** - Each `SKILL.md` file provides instructions for the agent
-3. **Context-Aware** - The agent uses skills when your requests match their descriptions
-
-### Example Usage
-
-After installing the `bahn` skill:
-
-**You:** "Is the ICE 801 from Berlin to Munich on time?"
-
-**Agent:** [Uses bahn skill to check real-time delays]
-
-**You:** "What's the ticket price from Berlin to Munich?"
-
-**Agent:** [Uses bahn skill to check pricing via journeys endpoint]
-
-**You:** "How much with Bahncard 25?"
-
-**Agent:** [Uses bahn skill with Bahncard discount]
-
-### Telling Your Agent About New Skills
-
-If you've installed a new skill and your agent doesn't seem to be using it, you can explicitly tell your agent:
+A skill is just a folder with:
 
 ```
-"I've installed the bahn skill in ~/clawd/skills/bahn/. You can now check Deutsche Bahn train delays, connections, ticket prices, and Bahncard discounts."
+skill-name/
+├── SKILL.md          # Instructions the agent reads
+├── scripts/          # Optional helper scripts
+└── references/       # Optional API docs, data files
 ```
 
-Your agent will read the skill's `SKILL.md` and know how to use it.
+The `SKILL.md` is the important part. It's written in natural language and tells the agent when and how to use the skill. No code required for the agent — it follows the instructions like, well, instructions.
 
-## Development
+## Writing your own
 
-Each skill is self-contained with its own:
-- `SKILL.md` - Documentation and usage instructions
-- `scripts/` - Example scripts and utilities
-- `references/` - API documentation and references
+1. Create a folder in `~/.openclaw/workspace/skills/`
+2. Add a `SKILL.md` with a name, description, and clear instructions
+3. Done. The agent will find it on the next session.
+
+Good skills are specific ("check DB train delays via bahn.de API") not vague ("help with travel"). The description is what the agent uses to decide if the skill is relevant to your request.
 
 ## Contributing
 
-Contributions welcome! Please feel free to submit a Pull Request.
+PRs welcome. If you built a skill that works well for you, share it. Keep the folder structure clean and the `SKILL.md` descriptive.
 
 ## License
 
-MIT License - see [LICENSE](./LICENSE) for details.
-
-## Credits
-
-Built for the [Clawdbot](https://github.com/clawdbot/clawdbot) community.
+MIT — do whatever you want with these.
